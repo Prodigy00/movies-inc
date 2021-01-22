@@ -4,7 +4,7 @@ import { notify } from '../utils/notify';
 
 export const useMoviesFetch = (url, queryParams = {}) => {
   const [data, setMoviesData] = useState([]);
-
+  console.log({ data });
   const handleMoviesQuery = async () => {
     try {
       let response = await movies
