@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const Profile = () => {
+const MovieDetail = () => {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
+      <Text>MovieDetail</Text>
     </View>
   );
 };
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile;
+export default MovieDetail;

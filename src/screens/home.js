@@ -5,31 +5,28 @@ import {
   View,
   Image,
   TouchableOpacity,
-  ScrollView,
   Dimensions,
-  ImageBackground,
   TextInput,
   FlatList,
   SafeAreaView,
 } from 'react-native';
-import Carousel from 'react-native-anchor-carousel';
-import { FontAwesome5, Feather, MaterialIcons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import { useMoviesFetch } from '../hooks/useMoviesFetch';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const [movies, handleMoviesQuery] = useMoviesFetch('/trending/movie/day');
-
-  const { width, height } = Dimensions.get('window');
 
   React.useEffect(() => {
     handleMoviesQuery();
   }, []);
 
-  const renderMovies = ({ item, index }) => {
+  const renderMovies = ({ item }) => {
     console.log({ item });
     let uri = `http://image.tmdb.org/t/p/w500${item.poster_path}`;
     return (
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('MovieDetail', { item })}
+      >
         <View
           key={item.id}
           style={{
@@ -153,8 +150,6 @@ const styles = StyleSheet.create({
   movieItem: {
     flex: 0,
     flexShrink: 30,
-    // height: 100,
-    // width: width * 0.3,
     marginBottom: '2%',
   },
 });
