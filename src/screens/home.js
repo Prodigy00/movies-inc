@@ -58,18 +58,36 @@ const Home = () => {
               marginRight: 16,
             }}
           />
-          <View style={{ margin: 5 }}>
+          <View
+            style={{
+              margin: 5,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}
+          >
             <Text style={{ color: 'white', fontSize: 16, fontWeight: '600' }}>
               {item.title}
             </Text>
+
+            <View>
+              <Text style={{ color: 'white', fontSize: 16, fontWeight: '600' }}>
+                Rating: {item.vote_average}
+              </Text>
+              <Text
+                style={{ color: '#abb2bf', fontSize: 16, fontWeight: '600' }}
+              >
+                Release Date: {item.release_date}
+              </Text>
+            </View>
           </View>
         </View>
       </TouchableOpacity>
     );
   };
   return (
-    <SafeAreaView>
-      <View style={{ backgroundColor: 'black' }}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ backgroundColor: 'black', flex: 1 }}>
         <View style={styles.searchBarContainer}>
           <TextInput
             placeholder="Search Movies"
@@ -96,7 +114,9 @@ const Home = () => {
         </Text>
 
         <FlatList
-          data={movies}
+          data={movies.sort((a, b) =>
+            a.original_title.localeCompare(b.original_title)
+          )}
           renderItem={renderMovies}
           keyExtractor={(item) => item.id.toString()}
         />
@@ -109,7 +129,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000',
-    // height: 720,
   },
   searchBarContainer: {
     backgroundColor: '#fff',
@@ -130,12 +149,7 @@ const styles = StyleSheet.create({
     right: 20,
     top: 10,
   },
-  moviesContainerView: {
-    // display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    // backgroundColor: 'white',
-  },
+
   movieItem: {
     flex: 0,
     flexShrink: 30,
