@@ -4,7 +4,12 @@ import { Container, Button } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 import Heading from './Heading';
 
-const NoSelectedMovie = ({ navigation }) => (
+const NothingSelected = ({
+  navigation,
+  destinationRoute,
+  buttonText,
+  infoText,
+}) => (
   <SafeAreaView style={{ flex: 1 }}>
     <Container
       style={{
@@ -23,7 +28,7 @@ const NoSelectedMovie = ({ navigation }) => (
           style={{ alignSelf: 'center' }}
         />
         <Heading
-          headingText="Select A Movie"
+          headingText={infoText}
           style={{
             color: 'grey',
             fontSize: 24,
@@ -38,13 +43,13 @@ const NoSelectedMovie = ({ navigation }) => (
           danger
           active
           bordered
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate(`${destinationRoute}`)}
         >
-          <Text style={{ color: 'white' }}>Go to Movies</Text>
+          <Text style={{ color: 'white' }}>{buttonText}</Text>
         </Button>
       </View>
     </Container>
   </SafeAreaView>
 );
 
-export default NoSelectedMovie;
+export default NothingSelected;

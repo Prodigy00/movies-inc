@@ -7,6 +7,8 @@ import {
   View,
 } from 'react-native';
 
+import GoBack from './GoBack';
+
 const MovieDetailBackDrop = ({
   backdropUri,
   posterUri,
@@ -23,6 +25,7 @@ const MovieDetailBackDrop = ({
         }}
         blurRadius={10}
       >
+        <GoBack />
         <ScrollView style={{ flex: 1 }}>
           <Image source={{ uri: posterUri }} style={styles.img} />
           {children}

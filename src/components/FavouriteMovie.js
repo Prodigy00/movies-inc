@@ -1,38 +1,17 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { useDispatch } from 'react-redux';
-
-import {
-  addToFavourites,
-  removeFromFavourites,
-} from '../slices/favouritesSlice';
+import { useDispatch, connect } from 'react-redux';
 import { selectMovie } from '../slices/moviesSlice';
-import Favourite from './FavouriteButton';
 
-const Movie = ({ item, uri, navigation }) => {
-  const [isLiked, setIsLiked] = React.useState(false);
-
-  const dispatch = useDispatch();
-
-  const handleSelectAndNav = () => {
-    dispatch(selectMovie(item));
+const FavouriteMovie = ({ item, uri, navigation, selectMovie }) => {
+  const handleSelect = () => {
+    selectMovie(item);
     navigation.navigate('MovieDetail');
   };
 
-  const addMovie = (movie) => {
-    dispatch(addToFavourites(movie));
-  };
-
-  const removeMovie = (movie) => {
-    dispatch(removeFromFavourites(movie));
-  };
-
-  React.useEffect(() => {
-    isLiked ? addMovie(item) : removeMovie(item);
-  }, [isLiked]);
   return (
     <View key={item.id} style={styles.movieContainer}>
-      <TouchableOpacity onPress={() => handleSelectAndNav()}>
+      <TouchableOpacity onPress={() => handleSelect()}>
         <Image
           source={{
             uri,
@@ -42,7 +21,7 @@ const Movie = ({ item, uri, navigation }) => {
       </TouchableOpacity>
 
       <View style={styles.detailContainer}>
-        <TouchableOpacity onPress={() => handleSelectAndNav()}>
+        <TouchableOpacity onPress={() => handleSelect()}>
           <Text style={styles.movieTitle}>{item.title}</Text>
         </TouchableOpacity>
         <View>
@@ -52,11 +31,6 @@ const Movie = ({ item, uri, navigation }) => {
           </Text>
         </View>
       </View>
-      <Favourite
-        isLiked={isLiked}
-        handleLike={() => setIsLiked(!isLiked)}
-        positionStyle={styles.favouriteIconPosition}
-      />
     </View>
   );
 };
@@ -93,4 +67,4 @@ const styles = StyleSheet.create({
   favouriteIconPosition: { position: 'absolute', right: 20, top: 20 },
 });
 
-export default Movie;
+export default connect(null, { selectMovie })(FavouriteMovie);
