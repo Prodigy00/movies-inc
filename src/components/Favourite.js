@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feather } from '@expo/vector-icons';
+import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import { View, StyleSheet } from 'react-native';
 
 const Favourite = ({ isLiked, handleLike, positionStyle }) => {

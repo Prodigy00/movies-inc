@@ -7,7 +7,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Home from './src/screens/home';
-import MovieDetail from './src/screens/movie-detail';
+import MovieDetailScreen from './src/screens/movie-detail';
 import Recents from './src/screens/recents';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -34,7 +34,7 @@ export default function App() {
         />
         <Tab.Screen
           name="MovieDetail"
-          component={MovieDetail}
+          component={MovieDetailScreen}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({ color }) => (
