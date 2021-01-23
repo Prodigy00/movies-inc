@@ -1,13 +1,38 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux';
+
+import {
+  addToFavourites,
+  removeFromFavourites,
+} from '../slices/favouritesSlice';
+import { selectMovie, movieSelector } from '../slices/moviesSlice';
 import Favourite from './Favourite';
+
 const Movie = ({ item, uri, navigation }) => {
   const [isLiked, setIsLiked] = React.useState(false);
 
-  const handleNavigation = () => navigation.navigate('MovieDetail', { item });
+  const dispatch = useDispatch();
+
+  const handleSelectAndNav = () => {
+    dispatch(selectMovie(item));
+    navigation.navigate('MovieDetail');
+  };
+
+  const addMovie = (movie) => {
+    dispatch(addToFavourites(movie));
+  };
+
+  const removeMovie = (movie) => {
+    dispatch(removeFromFavourites(movie));
+  };
+
+  React.useEffect(() => {
+    isLiked ? addMovie(item) : removeMovie(item);
+  }, [isLiked]);
   return (
     <View key={item.id} style={styles.movieContainer}>
-      <TouchableOpacity onPress={() => handleNavigation()}>
+      <TouchableOpacity onPress={() => handleSelectAndNav()}>
         <Image
           source={{
             uri,
@@ -17,7 +42,7 @@ const Movie = ({ item, uri, navigation }) => {
       </TouchableOpacity>
 
       <View style={styles.detailContainer}>
-        <TouchableOpacity onPress={() => handleNavigation()}>
+        <TouchableOpacity onPress={() => handleSelectAndNav()}>
           <Text style={styles.movieTitle}>{item.title}</Text>
         </TouchableOpacity>
         <View>

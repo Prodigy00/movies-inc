@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const Recents = () => {
+const Favourites = () => {
   return (
     <View style={styles.container}>
-      <Text>Recents</Text>
+      <Text>Favourites</Text>
     </View>
   );
 };
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Recents;
+export default Favourites;

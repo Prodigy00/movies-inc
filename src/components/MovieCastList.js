@@ -5,12 +5,10 @@ import { useMovieCast } from '../hooks/useMovieCast';
 import MovieCast from './MovieCast';
 
 const MovieCastList = ({ movieId }) => {
-  const [cast, handleCastQuery] = useMovieCast('/movie/577922/credits', {
-    movie_id: movieId,
-  });
+  const [cast, handleCastQuery] = useMovieCast(`/movie/${movieId}/credits`);
   React.useEffect(() => {
     handleCastQuery();
-  }, []);
+  }, [movieId]);
 
   const renderCast = (character) => {
     return <MovieCast key={character.credit_id} actor={character} />;

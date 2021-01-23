@@ -1,19 +1,30 @@
 import React from 'react';
-import { Dimensions, SafeAreaView } from 'react-native';
+import { Dimensions, SafeAreaView, View, Text } from 'react-native';
+import { movieSelector } from '../slices/moviesSlice';
+import { useSelector } from 'react-redux';
+import { Feather } from '@expo/vector-icons';
+import { Button, Container } from 'native-base';
+
+import Heading from '../components/Heading';
 import MovieCastList from '../components/MovieCastList';
 import MovieDetailBackDrop from '../components/MovieDetailBackdrop';
 import MovieOverview from '../components/MovieOverview';
+import NoSelectedMovie from '../components/NoSelectedMovie';
 
 const { width, height } = Dimensions.get('window');
 
-const MovieDetailScreen = ({ route }) => {
-  const { item } = route.params;
+const MovieDetailScreen = ({ navigation }) => {
+  const movie = useSelector(movieSelector);
 
-  let backdropUri = item
-    ? `http://image.tmdb.org/t/p/w780${item.backdrop_path}`
+  if (Object.keys(movie).length < 1) {
+    return <NoSelectedMovie navigation={navigation} />;
+  }
+
+  let backdropUri = movie
+    ? `http://image.tmdb.org/t/p/w780${movie.backdrop_path}`
     : '';
-  let posterUri = item
-    ? `http://image.tmdb.org/t/p/w780${item.backdrop_path}`
+  let posterUri = movie
+    ? `http://image.tmdb.org/t/p/w780${movie.backdrop_path}`
     : '';
 
   return (
@@ -23,8 +34,8 @@ const MovieDetailScreen = ({ route }) => {
         backdropUri={backdropUri}
         posterUri={posterUri}
       >
-        <MovieOverview item={item} />
-        <MovieCastList movieId={item.id} />
+        <MovieOverview item={movie} />
+        <MovieCastList movieId={movie.id} />
       </MovieDetailBackDrop>
     </SafeAreaView>
   );

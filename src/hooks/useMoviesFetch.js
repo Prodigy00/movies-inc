@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import movies from '../api/movies';
 import { notify } from '../utils/notify';
+import Constants from 'expo-constants';
 
 export const useMoviesFetch = (url, queryParams = {}) => {
   const [data, setMoviesData] = useState([]);
@@ -11,7 +12,7 @@ export const useMoviesFetch = (url, queryParams = {}) => {
         .accept('application/json')
         .query({
           ...queryParams,
-          api_key: process.env.REACT_NATIVE_MOVIES_DB_API_KEY,
+          api_key: Constants.manifest.extra.moviesApiKey,
         })
 
         .url(url)
