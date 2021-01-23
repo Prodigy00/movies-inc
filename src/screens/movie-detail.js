@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import {
   Dimensions,
   ImageBackground,
@@ -17,8 +18,6 @@ const { width, height } = Dimensions.get('window');
 const MovieDetail = ({ navigation, route }) => {
   const { item } = route.params;
 
-  console.log({ item, route, genres, nrom: normalizedGenres() });
-
   let backdropUri = item
     ? `http://image.tmdb.org/t/p/w780${item.backdrop_path}`
     : '';
@@ -26,8 +25,16 @@ const MovieDetail = ({ navigation, route }) => {
     ? `http://image.tmdb.org/t/p/w780${item.backdrop_path}`
     : '';
 
-  const renderGenres = (genre_ids) => {
-    // let genresArr = Object.keys(genres).map(genre => genre);
+  const renderGenres = () => {
+    let normalized = normalizedGenres();
+    let retrievedGenres = item.genre_ids.map((id) => {
+      if (normalized.hasOwnProperty(id)) {
+        return normalized[id];
+      }
+    });
+
+    console.log({ retrievedGenres });
+    return retrievedGenres.join(',');
   };
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -81,13 +88,13 @@ const MovieDetail = ({ navigation, route }) => {
             <Text
               style={{
                 color: 'white',
-                fontSize: 16,
+                fontSize: 12,
                 fontWeight: '700',
                 letterSpacing: 1.5,
                 alignSelf: 'center',
               }}
             >
-              Genre: {item ? renderGenres(item.genres_ids) : ''}
+              Genre: {item ? renderGenres() : ''}
             </Text>
             <View style={{ padding: 10 }}>
               <Text
