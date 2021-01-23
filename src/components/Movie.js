@@ -3,11 +3,11 @@ import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Favourite from './Favourite';
 const Movie = ({ item, uri, navigation }) => {
   const [isLiked, setIsLiked] = React.useState(false);
+
+  const handleNavigation = () => navigation.navigate('MovieDetail', { item });
   return (
     <View key={item.id} style={styles.movieContainer}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('MovieDetail', { item })}
-      >
+      <TouchableOpacity onPress={() => handleNavigation()}>
         <Image
           source={{
             uri,
@@ -17,8 +17,9 @@ const Movie = ({ item, uri, navigation }) => {
       </TouchableOpacity>
 
       <View style={styles.detailContainer}>
-        <Text style={styles.movieTitle}>{item.title}</Text>
-
+        <TouchableOpacity onPress={() => handleNavigation()}>
+          <Text style={styles.movieTitle}>{item.title}</Text>
+        </TouchableOpacity>
         <View>
           <Text style={styles.movieRating}>Rating: {item.vote_average}</Text>
           <Text style={styles.releaseDate}>

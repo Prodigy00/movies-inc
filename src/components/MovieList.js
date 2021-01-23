@@ -15,6 +15,7 @@ const MovieList = ({ navigation }) => {
     let uri = `http://image.tmdb.org/t/p/w500${item.poster_path}`;
     return <Movie uri={uri} item={item} navigation={navigation} />;
   };
+
   return (
     <FlatList
       data={movies.sort((a, b) =>

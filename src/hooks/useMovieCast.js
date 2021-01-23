@@ -2,10 +2,10 @@ import { useState } from 'react';
 import movies from '../api/movies';
 import { notify } from '../utils/notify';
 
-export const useMoviesFetch = (url, queryParams = {}) => {
-  const [data, setMoviesData] = useState([]);
-  // console.log({ data });
-  const handleMoviesQuery = async () => {
+export const useMovieCast = (url, queryParams = {}) => {
+  const [cast, setCastData] = useState([]);
+  console.log({ cast });
+  const handleCastQuery = async () => {
     try {
       let response = await movies
         .accept('application/json')
@@ -18,12 +18,12 @@ export const useMoviesFetch = (url, queryParams = {}) => {
         .get()
         .json();
 
-      setMoviesData(response.results);
+      setCastData(response.cast);
     } catch (error) {
       console.log({ error });
       notify('An error occured');
     }
   };
 
-  return [data, handleMoviesQuery];
+  return [cast, handleCastQuery];
 };

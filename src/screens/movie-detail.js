@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dimensions, SafeAreaView } from 'react-native';
+import MovieCastList from '../components/MovieCastList';
 import MovieDetailBackDrop from '../components/MovieDetailBackdrop';
 import MovieOverview from '../components/MovieOverview';
 
@@ -23,6 +24,7 @@ const MovieDetailScreen = ({ route }) => {
         posterUri={posterUri}
       >
         <MovieOverview item={item} />
+        <MovieCastList movieId={item.id} />
       </MovieDetailBackDrop>
     </SafeAreaView>
   );
