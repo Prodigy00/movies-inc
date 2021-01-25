@@ -1,16 +1,15 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, View, ScrollView } from 'react-native';
 import { useSelector } from 'react-redux';
 import FavouriteMoviesList from '../components/FavouriteMoviesList';
 import Heading from '../components/Heading';
-import Movie from '../components/Movie';
 import NothingSelected from '../components/NothingSelected';
 
 import { selectFavourites } from '../slices/favouritesSlice';
 
 const Favourites = ({ navigation }) => {
   const favourites = useSelector(selectFavourites);
-  console.log({ favourites });
+
   if (favourites.length < 1) {
     return (
       <NothingSelected

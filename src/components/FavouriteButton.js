@@ -2,6 +2,9 @@ import React from 'react';
 import { Feather } from '@expo/vector-icons';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 
+const IS_LIKED_COLOUR = '#AD021B';
+const DEFAULT_COLOUR = '#a39eaa';
+
 const Favourite = ({ isLiked, handleLike, positionStyle }) => {
   return (
     <TouchableOpacity onPress={handleLike} style={positionStyle}>
@@ -10,7 +13,7 @@ const Favourite = ({ isLiked, handleLike, positionStyle }) => {
           name="heart"
           size={25}
           style={styles.heart}
-          color={`${isLiked ? '#AD021B' : '#a39eaa'}`}
+          color={`${isLiked ? IS_LIKED_COLOUR : DEFAULT_COLOUR}`}
         />
       </View>
     </TouchableOpacity>
@@ -18,12 +21,6 @@ const Favourite = ({ isLiked, handleLike, positionStyle }) => {
 };
 
 const styles = StyleSheet.create({
-  isLiked: {
-    color: '#AD021B',
-  },
-  isNotLiked: {
-    color: '#a39eaa',
-  },
   heart: {
     zIndex: 1,
   },

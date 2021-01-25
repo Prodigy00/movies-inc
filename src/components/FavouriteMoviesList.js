@@ -16,15 +16,14 @@ const FavouriteMoviesList = ({ favouritesList, navigation }) => {
   };
 
   return (
-    <View style={{ marginHorizontal: 10, marginVertical: 30, flex: 1 }}>
-      {favouritesList.map(renderFavourites)}
-    </View>
+    <View style={styles.container}>{favouritesList.map(renderFavourites)}</View>
   );
 };
 const styles = StyleSheet.create({
   container: {
+    marginHorizontal: 10,
+    marginVertical: 30,
     flex: 1,
-    backgroundColor: '#000',
   },
 });
 

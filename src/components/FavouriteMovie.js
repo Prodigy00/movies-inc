@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { useDispatch, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { selectMovie } from '../slices/moviesSlice';
 
 const FavouriteMovie = ({ item, uri, navigation, selectMovie }) => {
