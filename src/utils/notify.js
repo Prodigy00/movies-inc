@@ -1,9 +1,8 @@
-import { ToastAndroid, Platform } from 'react-native';
+import { Toast } from 'native-base';
 
-export const notify = (message) => {
-  if (Platform.OS !== 'android') {
-    console.log({ message });
-  } else {
-    ToastAndroid.show(message, ToastAndroid.LONG);
-  }
+export const notify = (message, otherConfig) => {
+  Toast.show({
+    text: `${message}`,
+    ...otherConfig,
+  });
 };
