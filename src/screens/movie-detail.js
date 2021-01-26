@@ -10,6 +10,7 @@ import NothingSelected from '../components/NothingSelected';
 import Ratings from '../components/Ratings';
 import { useGuestSession } from '../hooks/useGuestSession';
 import { useMovieRatingsUpdate } from '../hooks/useMovieRatingsUpdate';
+import movieUri from '../utils/movieUri';
 
 const { width, height } = Dimensions.get('window');
 
@@ -17,7 +18,7 @@ const MovieDetailScreen = ({ navigation }) => {
   const movie = useSelector(movieSelector);
   const [rating, setRating] = React.useState(0);
   const [ratingIsLoading, setRatingIsLoading] = React.useState(false);
-  const [sessionId, getSessionId, sessionIdExists] = useGuestSession();
+  const [sessionId, getSessionId] = useGuestSession();
   const [ratingIsUpdated, handleRatingsUpdate] = useMovieRatingsUpdate(
     movie.id,
     { value: rating },
@@ -45,12 +46,8 @@ const MovieDetailScreen = ({ navigation }) => {
     );
   }
 
-  let backdropUri = movie
-    ? `http://image.tmdb.org/t/p/w780${movie.backdrop_path}`
-    : '';
-  let posterUri = movie
-    ? `http://image.tmdb.org/t/p/w780${movie.backdrop_path}`
-    : '';
+  let backdropUri = movieUri.backdropUri(movie);
+  let posterUri = movieUri.posterUri(movie);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

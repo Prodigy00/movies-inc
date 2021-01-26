@@ -26,10 +26,8 @@ export const useGuestSession = () => {
 
       setGuestSession(response);
       setSessionId(response.guest_session_id);
-      console.log({ guestSession });
     } catch (error) {
-      console.log({ error });
-      notify('Guest session could not be retrieved');
+      notify('Guest session could not be retrieved', { type: 'danger' });
     }
   };
 
