@@ -20,3 +20,7 @@ https://user-images.githubusercontent.com/19712590/105881130-6ecd0e00-6004-11eb-
 
 https://user-images.githubusercontent.com/19712590/105881185-7ab8d000-6004-11eb-9034-44bcf1e7b6b8.mp4
  
+
+Want to run the project?
+
+Find it here: https://expo.io/@giddyjs/projects/moviesinc
