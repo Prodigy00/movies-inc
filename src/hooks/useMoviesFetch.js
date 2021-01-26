@@ -5,7 +5,7 @@ import Constants from 'expo-constants';
 
 export const useMoviesFetch = (url, queryParams = {}) => {
   const [data, setMoviesData] = useState([]);
-  // console.log({ data });
+
   const handleMoviesQuery = async () => {
     try {
       let response = await movies
@@ -21,8 +21,7 @@ export const useMoviesFetch = (url, queryParams = {}) => {
 
       setMoviesData(response.results);
     } catch (error) {
-      console.log({ error });
-      notify('An error occured');
+      notify('An error occured', { type: 'data' });
     }
   };
 

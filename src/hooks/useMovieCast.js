@@ -21,8 +21,7 @@ export const useMovieCast = (url, queryParams = {}) => {
 
       setCastData(response.cast);
     } catch (error) {
-      console.log({ error });
-      notify('An error occured');
+      notify('An error occured', { type: 'danger' });
     }
   };
 
