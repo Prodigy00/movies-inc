@@ -3098,11 +3098,6 @@ expo-sqlite@~8.5.0:
     "@expo/websql" "^1.0.1"
     lodash "^4.17.15"
 
-expo-status-bar@~1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.0.3.tgz#62b4d6145680abd43ba6ecfa465f835e88bf6263"
-  integrity sha512-/Orgla1nkIrfswNHbuAOTbPVq0g3+GrhoQVk7MRafY2dwrFLgXhaPExS+eN2hpmzqPv2LG5cqAZDCQUAjmZYBQ==
-
 expo@~40.0.0:
   version "40.0.0"
   resolved "https://registry.yarnpkg.com/expo/-/expo-40.0.0.tgz#6caf03587532cd18b482991332a8b75eeca2fcb7"
@@ -5477,13 +5472,6 @@ react-is@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
-
-react-native-anchor-carousel@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-anchor-carousel/-/react-native-anchor-carousel-3.1.2.tgz#d2ede7d51569b1a78b96665d0fd35da2c46c23a6"
-  integrity sha512-LPnK0mIK+/+t6gki14fQWMSMA2NbiG9gLGayuw2sNCegTnQQGl+NYbvyHinAH7WEm26dZe1YHlRnNPOaEzqKUQ==
-  dependencies:
-    prop-types "^15.5.10"
 
 react-native-drawer@2.5.1:
   version "2.5.1"
