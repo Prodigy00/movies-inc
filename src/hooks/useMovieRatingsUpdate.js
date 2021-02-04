@@ -20,7 +20,7 @@ export const useMovieRatingsUpdate = (movieId, data = {}, queryParams = {}) => {
         .url(`/movie/${movieId}/rating`)
         .post({ ...data })
         .unauthorized(() => {
-          notify('Unauthorized', {
+          notify('Unauthorized. Please try again.', {
             buttonText: 'Okay',
             type: 'danger',
           });

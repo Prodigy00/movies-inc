@@ -19,7 +19,7 @@ const MovieDetailScreen = ({ navigation }) => {
   const [rating, setRating] = React.useState(0);
   const [ratingIsLoading, setRatingIsLoading] = React.useState(false);
   const [sessionId, getSessionId] = useGuestSession();
-  const [ratingIsUpdated, handleRatingsUpdate] = useMovieRatingsUpdate(
+  const [, handleRatingsUpdate] = useMovieRatingsUpdate(
     movie.id,
     { value: rating },
     { guest_session_id: sessionId }
