@@ -23,4 +23,4 @@ https://user-images.githubusercontent.com/19712590/105881185-7ab8d000-6004-11eb-
 
 ## Want to view the project?
 
-Find it here: https://expo.io/@giddyjs/projects/movies-inc
+Find it here: https://expo.io/@giddyjs/projects/moviesinc
